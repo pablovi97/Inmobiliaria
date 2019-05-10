@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.inmobiliaria.FXMLController">
+    <children>
+      <TabPane layoutY="36.0" prefHeight="562.0" prefWidth="680.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Propietarios">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="36.0" layoutY="30.0" prefHeight="29.0" prefWidth="23.0" text="ID" />
+                        <Label layoutX="40.0" layoutY="97.0" text="Nombre" />
+                        <Label layoutX="297.0" layoutY="97.0" prefHeight="16.0" prefWidth="74.0" text="Apellidos" />
+                        <TextField fx:id="txIdUser" editable="false" layoutX="66.0" layoutY="32.0" prefHeight="26.0" prefWidth="32.0" />
+                        <TextField fx:id="txNombreUser" layoutX="101.0" layoutY="92.0" />
+                        <TextField fx:id="txApellidosUser" layoutX="371.0" layoutY="92.0" />
+                        <Button fx:id="btnAtrasUser" layoutX="419.0" layoutY="32.0" mnemonicParsing="false" text="&lt;" />
+                        <Button fx:id="btnCrearUser" layoutX="497.0" layoutY="32.0" mnemonicParsing="false" text="+" />
+                        <Button fx:id="btnAdelanteUser" layoutX="457.0" layoutY="32.0" mnemonicParsing="false" text="&gt;" />
+                        <Button fx:id="btnEliminarUser" layoutX="542.0" layoutY="32.0" mnemonicParsing="false" text="-" />
+                        <Button fx:id="btnModificarUser" layoutX="112.0" layoutY="32.0" mnemonicParsing="false" text="Modificar" />
+                        <Button fx:id="btnOkUser" layoutX="35.0" layoutY="131.0" mnemonicParsing="false" text="OK" />
+                        <Button fx:id="btnCancelarUser" layoutX="82.0" layoutY="131.0" mnemonicParsing="false" text="Cancelar" />
+                        <AnchorPane layoutX="26.0" layoutY="165.0" prefHeight="338.0" prefWidth="636.0" style="-fx-border-color: grey;">
+                           <children>
+                              <Button fx:id="btnAtrasCasa" layoutX="443.0" layoutY="39.0" mnemonicParsing="false" text="&lt;" />
+                              <Button fx:id="btnAgregarCasa" layoutX="522.0" layoutY="39.0" mnemonicParsing="false" text="+" />
+                              <Button fx:id="btnAdelanteCasa" layoutX="482.0" layoutY="39.0" mnemonicParsing="false" text="&gt;" />
+                              <Button fx:id="btnQuitarCasa" layoutX="567.0" layoutY="39.0" mnemonicParsing="false" text="-" />
+                              <Label layoutX="32.0" layoutY="97.0" prefHeight="29.0" prefWidth="23.0" text="ID" />
+                              <TextField fx:id="txIdCasa" layoutX="55.0" layoutY="99.0" prefHeight="26.0" prefWidth="39.0" />
+                              <Label layoutX="21.0" layoutY="161.0" text="Metros" />
+                              <TextField fx:id="txMetrosCasa" layoutX="84.0" layoutY="156.0" />
+                              <Label layoutX="21.0" layoutY="194.0" text="Habitaciones" />
+                              <TextField fx:id="txHabitacionesCasa" layoutX="106.0" layoutY="189.0" />
+                              <Label layoutX="21.0" layoutY="222.0" text="Domicilio" />
+                              <TextField fx:id="txDomicilioCasa" layoutX="94.0" layoutY="217.0" />
+                              <Label layoutX="13.0" layoutY="257.0" text="Garaje" />
+                              <CheckBox fx:id="chkGarajeCasa" layoutX="82.0" layoutY="256.0" mnemonicParsing="false" />
+                              <Button fx:id="btnOkCasa" layoutX="474.0" layoutY="176.0" mnemonicParsing="false" text="OK" />
+                              <Button fx:id="btnCancelarCasa" layoutX="454.0" layoutY="130.0" mnemonicParsing="false" text="Cancelar" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Casas">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnAtrasCasa_Casas" layoutX="370.0" layoutY="58.0" mnemonicParsing="false" text="&lt;" />
+                        <Button fx:id="btnAgregarCasa_Casas" layoutX="450.0" layoutY="58.0" mnemonicParsing="false" text="+" />
+                        <Button fx:id="btnAdelanteCasa_Casas" layoutX="409.0" layoutY="58.0" mnemonicParsing="false" text="&gt;" />
+                        <Button fx:id="btnQuitarCasa_Casas" layoutX="492.0" layoutY="58.0" mnemonicParsing="false" text="-" />
+                        <Label layoutX="136.0" layoutY="147.0" prefHeight="29.0" prefWidth="23.0" text="ID" />
+                        <TextField fx:id="btnIdCasa_Casas" layoutX="171.0" layoutY="149.0" prefHeight="26.0" prefWidth="39.0" />
+                        <Label layoutX="112.0" layoutY="198.0" text="Metros" />
+                        <TextField fx:id="txMetrosCasa_Casas" layoutX="171.0" layoutY="193.0" />
+                        <Label layoutX="71.0" layoutY="235.0" text="Habitaciones" />
+                        <TextField fx:id="txHabitacionesCasa_Casas" layoutX="171.0" layoutY="230.0" />
+                        <Label layoutX="92.0" layoutY="269.0" text="Domicilio" />
+                        <TextField fx:id="txDomicilioCasa_Casas" layoutX="171.0" layoutY="264.0" />
+                        <Label layoutX="101.0" layoutY="302.0" text="Garaje" />
+                        <CheckBox fx:id="chkGarajeCasa_Casas" layoutX="171.0" layoutY="301.0" mnemonicParsing="false" />
+                        <Button fx:id="btnOkCasa_Casas" layoutX="461.0" layoutY="256.0" mnemonicParsing="false" text="OK" />
+                        <Button fx:id="btnCancelarCasa_Casas" layoutX="442.0" layoutY="201.0" mnemonicParsing="false" text="Cancelar" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar layoutX="6.0" layoutY="8.0" prefHeight="29.0" prefWidth="673.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+    </children>
+</AnchorPane>
