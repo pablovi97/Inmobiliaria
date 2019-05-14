@@ -31,7 +31,8 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ConectarBaseDatos.crearTablaPropietarios();
+        //ConectarBaseDatos.crearTablaPropietarios();
+        ConectarBaseDatos.insertarPropietario();
         launch(args);
     }
 }
