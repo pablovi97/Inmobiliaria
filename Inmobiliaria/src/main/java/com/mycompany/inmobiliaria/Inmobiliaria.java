@@ -35,20 +35,28 @@ public class Inmobiliaria {
 
     public Casa avanzarCasa() {
         Casa casaResultado = casas.get(posCasa);
-        if (casas.get(posCasa + 1) != null) {
-            posCasa++;
-            casaResultado = casas.get(posCasa);
+        try {
+            if (casas.get(posCasa + 1) != null) {
+                posCasa++;
+                casaResultado = casas.get(posCasa);
 
+            }
+        } catch (Exception e) {
+            casaResultado = casas.get(posCasa);
         }
         return casaResultado;
     }
 
     public Casa retrocederCasa() {
         Casa casaResultado = casas.get(posCasa);
-        if (casas.get(posCasa - 1) != null) {
-            posCasa--;
-            casaResultado = casas.get(posCasa);
+        try {
+            if (casas.get(posCasa - 1) != null) {
+                posCasa--;
+                casaResultado = casas.get(posCasa);
 
+            }
+        } catch (Exception e) {
+            casaResultado = casas.get(posCasa);
         }
         return casaResultado;
     }
@@ -76,24 +84,34 @@ public class Inmobiliaria {
     public Propietario retrocederPropietario() {
 
         Propietario p = propietarios.get(posPropietario);
-        System.out.println(posPropietario);
-        if (propietarios.get(posPropietario - 1) != null) {
+        try {
 
-            posPropietario--;
+            System.out.println(posPropietario);
+            if (propietarios.get(posPropietario - 1) != null) {
+
+                posPropietario--;
+                p = propietarios.get(posPropietario);
+
+                System.out.println(p.nombre);
+
+            }
+
+        } catch (Exception e) {
             p = propietarios.get(posPropietario);
-
-            System.out.println(p.nombre);
-
         }
         return p;
     }
 
     public Propietario avanzarPropietario() {
         Propietario p = propietarios.get(posPropietario);
-        if (propietarios.get(posPropietario + 1) != null) {
-            posPropietario++;
-            p = propietarios.get(posPropietario);
+        try {
+            if (propietarios.get(posPropietario + 1) != null) {
+                posPropietario++;
+                p = propietarios.get(posPropietario);
 
+            }
+        } catch (Exception e) {
+            p = propietarios.get(posPropietario);
         }
         return p;
     }

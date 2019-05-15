@@ -148,23 +148,22 @@ public class FXMLController implements Initializable {
         btnOkUser.setVisible(false);
         btnCancelarUser.setVisible(false);
         System.out.println(inmobiliaria.propietarios.size());
-        if (inmobiliaria.propietarios.size() >= 2) {
 
-            System.out.println("hola que tal");
+ 
 
-            Propietario p = inmobiliaria.avanzarPropietario();
+        Propietario p = inmobiliaria.avanzarPropietario();
 
-            txNombreUser.setText(p.nombre);
-            txApellidosUser.setText(p.apellido);
-            txIdUser.setText(String.valueOf(p.getNuevoId()));
+        txNombreUser.setText(p.nombre);
+        txApellidosUser.setText(p.apellido);
+        txIdUser.setText(String.valueOf(p.getNuevoId()));
 
-        } else {
-            lbl.setText("no hay un propietario anterior!");
-        }
     }
 
     @FXML
     private void eliminarPropietario(MouseEvent event) {
+        
+        
+        
     }
 
     @FXML
@@ -174,7 +173,9 @@ public class FXMLController implements Initializable {
         p.setApellido(txApellidosUser.getText());
         inmobiliaria.introducirPropietario(p);
         System.out.println(p);
-
+        lbl.setText("");
+        txNombreUser.setText("");
+        txApellidosUser.setText("");
         inmobiliaria.verArrayListPropietario();
         txMetrosCasa.setDisable(false);
         txHabitacionesCasa.setDisable(false);
@@ -206,7 +207,7 @@ public class FXMLController implements Initializable {
         btnCancelarCasa.setDisable(false);
         btnOkCasa.setDisable(false);
         chkGarajeCasa.setDisable(false);
-*/
+         */
 
     }
 
@@ -224,17 +225,17 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void cancelarCasaPropietario(MouseEvent event) {
-       // txMetrosCasa.setDisable(true);
-       // txHabitacionesCasa.setDisable(true);
-       // txDomicilioCasa.setDisable(true);
-       // txIdCasa.setDisable(true);
-      //  chkGarajeCasa.setDisable(true);
+        // txMetrosCasa.setDisable(true);
+        // txHabitacionesCasa.setDisable(true);
+        // txDomicilioCasa.setDisable(true);
+        // txIdCasa.setDisable(true);
+        //  chkGarajeCasa.setDisable(true);
         txMetrosCasa.setText("");
         txHabitacionesCasa.setText("");
         txDomicilioCasa.setText("");
         txIdCasa.setText("");
-       // btnCancelarCasa.setVisible(false);
-       // btnOkCasa.setVisible(false);
+        // btnCancelarCasa.setVisible(false);
+        // btnOkCasa.setVisible(false);
     }
 
     @FXML
