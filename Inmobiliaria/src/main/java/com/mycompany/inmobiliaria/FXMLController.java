@@ -113,8 +113,6 @@ public class FXMLController implements Initializable {
         System.out.println(inmobiliaria.propietarios.size());
         if (inmobiliaria.propietarios.size() >= 2) {
 
-            System.out.println("hola que tal");
-
             Propietario p = inmobiliaria.retrocederPropietario();
 
             txNombreUser.setText(p.nombre);
@@ -149,8 +147,6 @@ public class FXMLController implements Initializable {
         btnCancelarUser.setVisible(false);
         System.out.println(inmobiliaria.propietarios.size());
 
- 
-
         Propietario p = inmobiliaria.avanzarPropietario();
 
         txNombreUser.setText(p.nombre);
@@ -158,12 +154,36 @@ public class FXMLController implements Initializable {
         txIdUser.setText(String.valueOf(p.getNuevoId()));
 
     }
+    boolean ModificarEstado = false;
+
+    @FXML
+    private void modificarPropietario(MouseEvent event) {
+
+        if (ModificarEstado == false) {
+            txIdUser.setEditable(true);
+            ModificarEstado = true;
+        } else {
+            txIdUser.setEditable(false);
+            ModificarEstado = false;
+            txIdUser.setText("");
+
+        }
+
+    }
 
     @FXML
     private void eliminarPropietario(MouseEvent event) {
-        
-        
-        
+        try {
+            Propietario p = inmobiliaria.propietarios.get(Integer.parseInt(txIdUser.getText()));
+
+            txApellidosUser.setText(p.getApellido());
+            txNombreUser.setText(p.getNombre());
+            inmobiliaria.propietarios.remove(Integer.parseInt(txIdUser.getText()));
+            lbl.setText("se ha eliminado al propietario!");
+        } catch (NumberFormatException numberFormatException) {
+            lbl.setText("No se ha podido eliminar al Propietario");
+        }
+
     }
 
     @FXML
@@ -173,7 +193,7 @@ public class FXMLController implements Initializable {
         p.setApellido(txApellidosUser.getText());
         inmobiliaria.introducirPropietario(p);
         System.out.println(p);
-        lbl.setText("");
+
         txNombreUser.setText("");
         txApellidosUser.setText("");
         inmobiliaria.verArrayListPropietario();
@@ -195,6 +215,8 @@ public class FXMLController implements Initializable {
         txNombreUser.setDisable(true);
         btnOkUser.setVisible(false);
         btnCancelarUser.setVisible(false);
+        txIdUser.setEditable(false);
+        ModificarEstado = false;
     }
 
     @FXML

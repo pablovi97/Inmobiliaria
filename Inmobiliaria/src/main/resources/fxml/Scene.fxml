@@ -29,7 +29,7 @@
                         <Button fx:id="btnCrearUser" layoutX="497.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#anhadirPropietario" text="+" />
                         <Button fx:id="btnAdelanteUser" layoutX="457.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#avanzarPropietario" text="&gt;" />
                         <Button fx:id="btnEliminarUser" layoutX="542.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#eliminarPropietario" text="-" />
-                        <Button fx:id="btnModificarUser" layoutX="112.0" layoutY="32.0" mnemonicParsing="false" text="Modificar" />
+                        <Button fx:id="btnModificarUser" layoutX="112.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#modificarPropietario" text="Modificar" />
                         <Button fx:id="btnOkUser" layoutX="35.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#crearPropietario" text="OK" />
                         <Button fx:id="btnCancelarUser" layoutX="82.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#CancelarPropietario" text="Cancelar" />
                         <AnchorPane layoutX="26.0" layoutY="165.0" prefHeight="338.0" prefWidth="636.0" style="-fx-border-color: grey;">
