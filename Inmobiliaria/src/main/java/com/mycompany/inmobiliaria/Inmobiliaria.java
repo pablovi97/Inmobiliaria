@@ -55,7 +55,15 @@ public class Inmobiliaria {
 
     public void verArrayListPropietario() {
         for (Propietario propietario : propietarios) {
-            System.out.println(propietario.nombre +" "+ propietario.getNuevoId());
+            System.out.println(propietario.nombre + " " + propietario.getNuevoId());
+        }
+    }
+
+    public void verArrayListCasadePropietarios(int i) {
+        Propietario p = propietarios.get(i);
+
+        for (Casa casa : p.casas) {
+            System.out.println(casa.Domicilio);
         }
     }
 
