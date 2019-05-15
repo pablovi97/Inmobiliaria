@@ -115,7 +115,7 @@ public class ConectarBaseDatos {
             String sql;
 
             stmt = conn.createStatement();
-            sql = "INSERT INTO CASA VALUES( "
+            sql = "INSERT INTO CASAS VALUES( "
                     + "   1, "
                     + "   10, "
                     + "   2, "
@@ -194,6 +194,30 @@ public class ConectarBaseDatos {
             ex.printStackTrace();
         }
         return result;
+    }
+    
+    public static void eliminarCasa(int id){
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+            Statement st = conn.createStatement();
+            ResultSet res = st.executeQuery("DELETE FROM CASAS WHERE CASAID = "+id);
+            System.out.println(res.getString(0));
+            st.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void eliminarPropietario(int id){
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+            Statement st = conn.createStatement();
+            ResultSet res = st.executeQuery("DELETE FROM PROPIETARIOS WHERE PROPIETARIOID = "+id);
+            System.out.println(res.getString(0));
+            st.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
 
