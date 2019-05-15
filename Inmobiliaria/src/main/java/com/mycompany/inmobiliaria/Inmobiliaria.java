@@ -5,14 +5,8 @@
  */
 package com.mycompany.inmobiliaria;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.ArrayList;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -36,8 +30,8 @@ public class Inmobiliaria {
     }
 
     ArrayList<Casa> casas = new ArrayList<>();
-    static int posCasa = 0;
-    static int posPropietario = 0;
+    static int posCasa = -1;
+    static int posPropietario = -1;
 
     public Casa avanzarCasa() {
         Casa casaResultado = casas.get(posCasa);
@@ -59,20 +53,27 @@ public class Inmobiliaria {
         return casaResultado;
     }
 
-    public void verArrayListPropietario(){
+    public void verArrayListPropietario() {
         for (Propietario propietario : propietarios) {
-            System.out.println(propietario.nombre);
+            System.out.println(propietario.nombre +" "+ propietario.getNuevoId());
         }
     }
+
+    public void verArrayListCasa() {
+        for (Casa casa : casas) {
+            System.out.println(casa.Domicilio);
+        }
+    }
+
     public Propietario retrocederPropietario() {
-      int pos = posPropietario;
-        Propietario p = propietarios.get(pos);
-         System.out.println("entra");
-        if (propietarios.get(pos-1) != null) {
-            System.out.println("entra dentro del if");
+
+        Propietario p = propietarios.get(posPropietario);
+        System.out.println(posPropietario);
+        if (propietarios.get(posPropietario - 1) != null) {
+
             posPropietario--;
-            p = propietarios.get(pos);
-            System.out.println("retroceder Prop");
+            p = propietarios.get(posPropietario);
+
             System.out.println(p.nombre);
 
         }
@@ -92,14 +93,14 @@ public class Inmobiliaria {
     public void introducirPropietario(Propietario p) {
 
         propietarios.add(p);
-        posPropietario = p.getNuevoId();
-                
+        posPropietario++;
 
     }
 
     public void introducirCasa(Casa c) {
 
         casas.add(c);
+        posCasa++;
 
     }
 

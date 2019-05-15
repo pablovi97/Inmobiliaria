@@ -5,6 +5,7 @@
  */
 package com.mycompany.inmobiliaria;
 
+//import static com.mycompany.inmobiliaria.Propietario.id;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -30,21 +31,28 @@ public class Casa {
         this.habitaciones = habitaciones;
         this.garaje = garaje;
         this.Domicilio = Domicilio;
+        idcasa++;
+        nuevoId = idcasa;
     }
 
+    @XmlElement(name = "IDcasa")
+    public int getNuevoId() {
+        return nuevoId;
+    }
+    int nuevoId;
+    static int idcasa = -1;
 
     double metrosCuadrados;
 
     int habitaciones;
 
     boolean garaje;
-    
+
     String Domicilio;
 
     public Casa() {
 
     }
-
 
     @XmlTransient
     ArrayList<Propietario> propietarios = new ArrayList<>();
@@ -53,12 +61,10 @@ public class Casa {
     public boolean isGaraje() {
         return garaje;
     }
-    
+
     public void setGaraje(boolean garaje) {
         this.garaje = garaje;
-    } 
-
-
+    }
 
     @XmlElement(name = "metrosCuadrados")
     public double getMetrosCuadrados() {

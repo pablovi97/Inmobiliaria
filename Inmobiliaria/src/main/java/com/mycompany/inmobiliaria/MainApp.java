@@ -32,7 +32,7 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         //ConectarBaseDatos.crearTablaPropietarios();
-        ConectarBaseDatos.insertarPropietario();
+       // ConectarBaseDatos.insertarPropietario();
         launch(args);
     }
 }

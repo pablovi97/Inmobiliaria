@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.inmobiliaria.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.inmobiliaria.FXMLController">
     <children>
       <TabPane layoutY="36.0" prefHeight="562.0" prefWidth="680.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -62,11 +62,11 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnAtrasCasa_Casas" layoutX="370.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#atrasCasa" text="&lt;" />
-                        <Button fx:id="btnAgregarCasa_Casas" layoutX="450.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#anhadirPropietario" text="+" />
+                        <Button fx:id="btnAgregarCasa_Casas" layoutX="450.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#anhadirCasa_casas" text="+" />
                         <Button fx:id="btnAdelanteCasa_Casas" layoutX="409.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#avanzarCasa" text="&gt;" />
-                        <Button fx:id="btnQuitarCasa_Casas" layoutX="492.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#eliminarPropietario" text="-" />
+                        <Button fx:id="btnQuitarCasa_Casas" layoutX="492.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#eliminarCasa_Casas" text="-" />
                         <Label layoutX="136.0" layoutY="147.0" prefHeight="29.0" prefWidth="23.0" text="ID" />
-                        <TextField fx:id="btnIdCasa_Casas" editable="false" layoutX="171.0" layoutY="149.0" prefHeight="26.0" prefWidth="39.0" />
+                        <TextField fx:id="txIdCasa_Casas" editable="false" layoutX="171.0" layoutY="149.0" prefHeight="26.0" prefWidth="39.0" />
                         <Label layoutX="112.0" layoutY="198.0" text="Metros" />
                         <TextField fx:id="txMetrosCasa_Casas" layoutX="171.0" layoutY="193.0" />
                         <Label layoutX="71.0" layoutY="235.0" text="Habitaciones" />

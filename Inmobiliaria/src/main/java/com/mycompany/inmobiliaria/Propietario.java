@@ -18,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Propietario {
 
     public Propietario() {
-
+        id++;
+        nuevoId = id;
     }
 
     public Propietario(String nombre, String apellido) {
@@ -39,7 +40,7 @@ public class Propietario {
         return nuevoId;
     }
     int nuevoId;
-    static int id=-1;
+    static int id = -1;
 
     String apellido;
     ArrayList<Casa> casas = new ArrayList<>();

@@ -64,8 +64,6 @@ public class FXMLController implements Initializable {
     @FXML
     private Button btnQuitarCasa_Casas;
     @FXML
-    private TextField btnIdCasa_Casas;
-    @FXML
     private TextField txMetrosCasa_Casas;
     @FXML
     private TextField txHabitacionesCasa_Casas;
@@ -80,6 +78,8 @@ public class FXMLController implements Initializable {
     Inmobiliaria inmobiliaria;
     @FXML
     private Label lbl;
+    @FXML
+    private TextField txIdCasa_Casas;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,6 +88,11 @@ public class FXMLController implements Initializable {
         btnCancelarUser.setVisible(false);
         txApellidosUser.setDisable(true);
         txNombreUser.setDisable(true);
+        btnCancelarCasa_Casas.setVisible(false);
+        btnOkCasa_Casas.setVisible(false);
+        txDomicilioCasa_Casas.setDisable(true);
+        txHabitacionesCasa_Casas.setDisable(true);
+        txMetrosCasa_Casas.setDisable(true);
     }
 
     @FXML
@@ -99,11 +104,15 @@ public class FXMLController implements Initializable {
         btnCancelarUser.setVisible(false);
         System.out.println(inmobiliaria.propietarios.size());
         if (inmobiliaria.propietarios.size() >= 2) {
+
+            System.out.println("hola que tal");
+
             Propietario p = inmobiliaria.retrocederPropietario();
 
             txNombreUser.setText(p.nombre);
             txApellidosUser.setText(p.apellido);
             txIdUser.setText(String.valueOf(p.getNuevoId()));
+
         } else {
             lbl.setText("no hay un propietario anterior!");
         }
@@ -126,7 +135,24 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void avanzarPropietario(MouseEvent event) {
-        inmobiliaria.avanzarPropietario();
+        txApellidosUser.setDisable(true);
+        txNombreUser.setDisable(true);
+        btnOkUser.setVisible(false);
+        btnCancelarUser.setVisible(false);
+        System.out.println(inmobiliaria.propietarios.size());
+        if (inmobiliaria.propietarios.size() >= 2) {
+
+            System.out.println("hola que tal");
+
+            Propietario p = inmobiliaria.avanzarPropietario();
+
+            txNombreUser.setText(p.nombre);
+            txApellidosUser.setText(p.apellido);
+            txIdUser.setText(String.valueOf(p.getNuevoId()));
+
+        } else {
+            lbl.setText("no hay un propietario anterior!");
+        }
     }
 
     @FXML
@@ -148,7 +174,7 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void CancelarPropietario(MouseEvent event) {
-          lbl.setText("");
+        lbl.setText("");
         txNombreUser.setText("");
         txApellidosUser.setText("");
         txApellidosUser.setDisable(true);
@@ -167,18 +193,68 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void atrasCasa(MouseEvent event) {
+
+        Casa c = inmobiliaria.retrocederCasa();
+
+        txDomicilioCasa_Casas.setText(c.Domicilio);
+        txHabitacionesCasa_Casas.setText(String.valueOf(c.habitaciones));
+        txMetrosCasa_Casas.setText(String.valueOf(c.metrosCuadrados));
+        txIdCasa_Casas.setText(String.valueOf(c.getNuevoId()));
+
     }
 
     @FXML
     private void avanzarCasa(MouseEvent event) {
+        Casa c = inmobiliaria.avanzarCasa();
+
+        txDomicilioCasa_Casas.setText(c.Domicilio);
+        txHabitacionesCasa_Casas.setText(String.valueOf(c.habitaciones));
+        txMetrosCasa_Casas.setText(String.valueOf(c.metrosCuadrados));
+        txIdCasa_Casas.setText(String.valueOf(c.getNuevoId()));
+
     }
 
     @FXML
     private void crearCasa(MouseEvent event) {
+
+        String domicilio = txDomicilioCasa_Casas.getText();
+        int habitaciones = Integer.parseInt(txHabitacionesCasa_Casas.getText());
+        double metros = Double.parseDouble(txMetrosCasa_Casas.getText());
+        boolean garaje = chkGarajeCasa_Casas.isPressed();
+        inmobiliaria.introducirCasa(new Casa(metros, habitaciones, garaje, domicilio));
+        inmobiliaria.verArrayListCasa();
+        txDomicilioCasa_Casas.setText("");
+        txHabitacionesCasa_Casas.setText("");
+        txMetrosCasa_Casas.setText("");
+
     }
 
     @FXML
     private void cancelarCasa(MouseEvent event) {
+        txDomicilioCasa_Casas.setText("");
+        txHabitacionesCasa_Casas.setText("");
+        txMetrosCasa_Casas.setText("");
+        txIdCasa_Casas.setText("");
+        txIdCasa_Casas.setDisable(true);
+        txDomicilioCasa_Casas.setDisable(true);
+        txHabitacionesCasa_Casas.setDisable(true);
+        txMetrosCasa_Casas.setDisable(true);
+        btnCancelarCasa_Casas.setVisible(false);
+        btnOkCasa_Casas.setVisible(false);
+
+    }
+
+    @FXML
+    private void anhadirCasa_casas(MouseEvent event) {
+        txDomicilioCasa_Casas.setDisable(false);
+        txHabitacionesCasa_Casas.setDisable(false);
+        txMetrosCasa_Casas.setDisable(false);
+        btnCancelarCasa_Casas.setVisible(true);
+        btnOkCasa_Casas.setVisible(true);
+    }
+
+    @FXML
+    private void eliminarCasa_Casas(MouseEvent event) {
     }
 
 }
