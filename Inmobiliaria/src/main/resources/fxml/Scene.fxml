@@ -35,7 +35,7 @@
                         <AnchorPane layoutX="26.0" layoutY="165.0" prefHeight="338.0" prefWidth="636.0" style="-fx-border-color: grey;">
                            <children>
                               <Button fx:id="btnAtrasCasa" layoutX="443.0" layoutY="39.0" mnemonicParsing="false" text="&lt;" />
-                              <Button fx:id="btnAgregarCasa" layoutX="522.0" layoutY="39.0" mnemonicParsing="false" text="+" />
+                              <Button fx:id="btnAgregarCasa" layoutX="522.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#anhadirCasa" text="+" />
                               <Button fx:id="btnAdelanteCasa" layoutX="482.0" layoutY="39.0" mnemonicParsing="false" text="&gt;" />
                               <Button fx:id="btnQuitarCasa" layoutX="567.0" layoutY="39.0" mnemonicParsing="false" text="-" />
                               <Label layoutX="32.0" layoutY="97.0" prefHeight="29.0" prefWidth="23.0" text="ID" />

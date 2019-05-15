@@ -93,6 +93,14 @@ public class FXMLController implements Initializable {
         txDomicilioCasa_Casas.setDisable(true);
         txHabitacionesCasa_Casas.setDisable(true);
         txMetrosCasa_Casas.setDisable(true);
+        txMetrosCasa.setDisable(true);
+        txHabitacionesCasa.setDisable(true);
+        txDomicilioCasa.setDisable(true);
+        txIdCasa.setDisable(true);
+        btnCancelarCasa.setVisible(false);
+        btnOkCasa.setVisible(false);
+        chkGarajeCasa.setDisable(true);
+
     }
 
     @FXML
@@ -184,11 +192,35 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    private void anhadirCasa(MouseEvent event) {
+        txMetrosCasa.setDisable(false);
+        txHabitacionesCasa.setDisable(false);
+        txDomicilioCasa.setDisable(false);
+        txIdCasa.setDisable(false);
+        btnCancelarCasa.setVisible(true);
+        btnOkCasa.setVisible(true);
+        chkGarajeCasa.setDisable(false);
+
+    }
+
+    @FXML
     private void anhadirCasaPropietario(MouseEvent event) {
+
     }
 
     @FXML
     private void cancelarCasaPropietario(MouseEvent event) {
+        txMetrosCasa.setDisable(true);
+        txHabitacionesCasa.setDisable(true);
+        txDomicilioCasa.setDisable(true);
+        txIdCasa.setDisable(true);
+        chkGarajeCasa.setDisable(true);
+        txMetrosCasa.setText("");
+        txHabitacionesCasa.setText("");
+        txDomicilioCasa.setText("");
+        txIdCasa.setText("");
+        btnCancelarCasa.setVisible(false);
+        btnOkCasa.setVisible(false);
     }
 
     @FXML
