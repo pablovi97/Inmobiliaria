@@ -34,10 +34,10 @@
                         <Button fx:id="btnCancelarUser" layoutX="82.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#CancelarPropietario" text="Cancelar" />
                         <AnchorPane layoutX="26.0" layoutY="165.0" prefHeight="338.0" prefWidth="636.0" style="-fx-border-color: grey;">
                            <children>
-                              <Button fx:id="btnAtrasCasa" layoutX="443.0" layoutY="39.0" mnemonicParsing="false" text="&lt;" />
+                              <Button fx:id="btnAtrasCasa" layoutX="443.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#atrasCasaProp" text="&lt;" />
                               <Button fx:id="btnAgregarCasa" layoutX="522.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#anhadirCasa" text="+" />
-                              <Button fx:id="btnAdelanteCasa" layoutX="482.0" layoutY="39.0" mnemonicParsing="false" text="&gt;" />
-                              <Button fx:id="btnQuitarCasa" layoutX="567.0" layoutY="39.0" mnemonicParsing="false" text="-" />
+                              <Button fx:id="btnAdelanteCasa" layoutX="482.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#avanzarCasaProp" text="&gt;" />
+                              <Button fx:id="btnQuitarCasa" layoutX="567.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#quitarCasaProp" text="-" />
                               <Label layoutX="32.0" layoutY="97.0" prefHeight="29.0" prefWidth="23.0" text="ID" />
                               <TextField fx:id="txIdCasa" layoutX="55.0" layoutY="99.0" prefHeight="26.0" prefWidth="39.0" />
                               <Label layoutX="21.0" layoutY="161.0" text="Metros" />
@@ -77,6 +77,7 @@
                         <CheckBox fx:id="chkGarajeCasa_Casas" layoutX="171.0" layoutY="301.0" mnemonicParsing="false" />
                         <Button fx:id="btnOkCasa_Casas" layoutX="461.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#crearCasa" text="OK" />
                         <Button fx:id="btnCancelarCasa_Casas" layoutX="442.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#cancelarCasa" text="Cancelar" />
+                        <Label fx:id="lblcasas" layoutX="30.0" layoutY="32.0" prefHeight="17.0" prefWidth="310.0" textFill="#2aae54" />
                      </children></AnchorPane>
             </content>
           </Tab>

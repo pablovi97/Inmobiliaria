@@ -177,7 +177,7 @@ public class ConectarBaseDatos {
     }
     
     public static int obtenerIdMaxPropietario(){
-        int result = 0;
+        int result = -1;
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement st = conn.createStatement();
@@ -191,7 +191,7 @@ public class ConectarBaseDatos {
     }
     
     public static int obtenerIdMaxCasa(){
-        int result = 0;
+        int result = -1;
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement st = conn.createStatement();

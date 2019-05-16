@@ -40,7 +40,7 @@ public class Propietario {
         return nuevoId;
     }
     int nuevoId;
-    static int id = -1;
+    static int id = ConectarBaseDatos.obtenerIdMaxPropietario();;
 
     String apellido;
     ArrayList<Casa> casas = new ArrayList<>();

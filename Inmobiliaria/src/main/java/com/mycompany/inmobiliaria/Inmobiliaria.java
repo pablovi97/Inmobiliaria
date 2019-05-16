@@ -30,8 +30,8 @@ public class Inmobiliaria {
     }
 
     ArrayList<Casa> casas = new ArrayList<>();
-    static int posCasa = -1;
-    static int posPropietario = -1;
+    static int posCasa = ConectarBaseDatos.obtenerIdMaxCasa();
+    static int posPropietario = ConectarBaseDatos.obtenerIdMaxPropietario();
 
     public Casa avanzarCasa() {
         Casa casaResultado = casas.get(posCasa);
@@ -83,16 +83,31 @@ public class Inmobiliaria {
 
     public Propietario retrocederPropietario() {
 
-        Propietario p = propietarios.get(posPropietario);
+        Propietario p = null;
         try {
 
-            System.out.println(posPropietario);
-            if (propietarios.get(posPropietario - 1) != null) {
-
-                posPropietario--;
+            if (propietarios.get(posPropietario) != null) {
                 p = propietarios.get(posPropietario);
 
-                System.out.println(p.nombre);
+                if (propietarios.get(posPropietario - 1) != null) {
+
+                    posPropietario--;
+                    p = propietarios.get(posPropietario);
+
+                    System.out.println(p.nombre);
+
+                }
+            } else {
+
+                do {
+
+                    if (propietarios.get(posPropietario) == null) {
+                        posPropietario--;
+                    }
+
+                } while (propietarios.get(posPropietario) != null);
+
+                p = propietarios.get(posPropietario);
 
             }
 
@@ -120,8 +135,20 @@ public class Inmobiliaria {
 
         propietarios.add(p);
         posPropietario++;
+        System.out.println("posProp" + posPropietario);
 
     }
+  /*  
+    public void avanzarCasaPropietario(int i){
+        
+    }
+ 
+    public Casa RetrocederCasaPropietario(int i){
+
+        
+        
+    }
+*/
 
     public void introducirCasa(Casa c) {
 

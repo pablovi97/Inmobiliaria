@@ -40,7 +40,7 @@ public class Casa {
         return nuevoId;
     }
     int nuevoId;
-    static int idcasa = -1;
+    static int idcasa = ConectarBaseDatos.obtenerIdMaxCasa();;
 
     double metrosCuadrados;
 
