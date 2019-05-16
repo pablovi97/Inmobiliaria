@@ -17,19 +17,16 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @XmlRootElement(name = "casa")
 public class Casa {
-    //QUITAR VENTANAS
 
     public Casa(double metrosCuadrados, int habitaciones, String Domicilio) {
         this.metrosCuadrados = metrosCuadrados;
         this.habitaciones = habitaciones;
         this.Domicilio = Domicilio;
-        this.garaje = false;
     }
 
     public Casa(double metrosCuadrados, int habitaciones, boolean garaje, String Domicilio) {
         this.metrosCuadrados = metrosCuadrados;
         this.habitaciones = habitaciones;
-        this.garaje = garaje;
         this.Domicilio = Domicilio;
         idcasa++;
         nuevoId = idcasa;
@@ -46,8 +43,6 @@ public class Casa {
 
     int habitaciones;
 
-    boolean garaje;
-
     String Domicilio;
 
     public Casa() {
@@ -57,14 +52,6 @@ public class Casa {
     @XmlTransient
     ArrayList<Propietario> propietarios = new ArrayList<>();
 
-    @XmlElement(name = "garaje")
-    public boolean isGaraje() {
-        return garaje;
-    }
-
-    public void setGaraje(boolean garaje) {
-        this.garaje = garaje;
-    }
 
     @XmlElement(name = "metrosCuadrados")
     public double getMetrosCuadrados() {

@@ -56,8 +56,7 @@ public class ConectarBaseDatos {
                     + "   CASAID INTEGER PRIMARY KEY, "
                     + "   METROSCUADRADOS INTEGER, "
                     + "   HABITACIONES INTEGER, "
-                    + "   DOMICILIO VARCHAR(255), "
-                    + "   GARAJE BOOLEAN, "
+                    + "   DOMICILIO VARCHAR(255) "
                     + ")";
 
             stmt.executeUpdate(sql);
@@ -99,8 +98,8 @@ public class ConectarBaseDatos {
             stmt = conn.createStatement();
             sql = "INSERT INTO PROPIETARIOS VALUES( "
                     + p.getNuevoId()+", "
-                    + p.getNombre()+", "
-                    + p.getApellido()+" "
+                    + " \'"+ p.getNombre()+ "\', "
+                    + " \'"+p.getApellido()+"\' "
                     + ")";
             stmt.executeUpdate(sql);
             System.out.println("Insert table in given database...");
@@ -121,8 +120,7 @@ public class ConectarBaseDatos {
                     + c.getNuevoId()+", "
                     + c.getMetrosCuadrados()+", "
                     + c.getHabitaciones()+", "
-                    + c.getDomicilio()+", "
-                    + c.isGaraje()+", "
+                    + " \'"+c.getDomicilio()+" \' "
                     + ")";
 
             stmt.executeUpdate(sql);
@@ -160,9 +158,9 @@ public class ConectarBaseDatos {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM CASAS");
             while(res.next()){
+                
                 Casa c = new Casa();
                 c.setDomicilio(res.getString("DOMICILIO"));
-                c.setGaraje(res.getBoolean("GARAJE"));
                 c.setHabitaciones(res.getInt("HABITACIONES"));
                 c.setMetrosCuadrados(res.getInt("METROSCUADRADOS"));
                 System.out.print(res.getInt("CASAID") + "; ");
@@ -187,7 +185,7 @@ public class ConectarBaseDatos {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return result;
+        return result+1;
     }
     
     public static int obtenerIdMaxCasa(){
@@ -201,7 +199,7 @@ public class ConectarBaseDatos {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return result;
+        return result+1;
     }
     
     public static void eliminarCasa(int id){

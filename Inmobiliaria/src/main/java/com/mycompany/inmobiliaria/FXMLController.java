@@ -103,6 +103,12 @@ public class FXMLController implements Initializable {
         btnOkCasa.setDisable(true);
         chkGarajeCasa.setDisable(true);
         
+        ConectarBaseDatos.crearTablaCasa();
+        ConectarBaseDatos.crearTablaPropietarios();
+        ConectarBaseDatos.crearTablaPropietariosCasa();
+        //this.inmobiliaria.insertarDatosCasa();
+        this.inmobiliaria.insertarDatosPropietarios();
+        
     }
     
     @FXML

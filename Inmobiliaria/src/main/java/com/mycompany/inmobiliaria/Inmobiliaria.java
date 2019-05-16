@@ -46,6 +46,22 @@ public class Inmobiliaria {
         }
         return casaResultado;
     }
+    
+    
+    
+    public void insertarDatosCasa(){
+        ArrayList<Casa> casas = ConectarBaseDatos.selectCasas();
+        for (Casa casa : casas) {
+            this.casas.add(casa);
+        }
+    }
+    
+    public void insertarDatosPropietarios(){
+        ArrayList<Propietario> props = ConectarBaseDatos.selectPropietarios();
+        for (Propietario prop : props) {
+            this.propietarios.add(prop);
+        }
+    }
 
     public Casa retrocederCasa() {
         Casa casaResultado = casas.get(posCasa);
@@ -135,6 +151,7 @@ public class Inmobiliaria {
 
         propietarios.add(p);
         posPropietario++;
+        
         System.out.println("posProp" + posPropietario);
 
     }

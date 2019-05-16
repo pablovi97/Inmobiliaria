@@ -71,5 +71,7 @@ public class Propietario {
     public void setCasas(ArrayList<Casa> casas) {
         this.casas = casas;
     }
+    
+    
 
 }
