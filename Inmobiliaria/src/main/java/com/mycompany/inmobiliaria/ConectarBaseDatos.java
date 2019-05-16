@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,6 +78,8 @@ public class ConectarBaseDatos {
             stmt = conn.createStatement();
             sql = "CREATE TABLE PROPIETARIOSCASA "
                     + "("
+                    + "   PROPIETARIOID INTEGER, "
+                    + "   CASAID INTEGER "
                     + ")";
 
             stmt.executeUpdate(sql);
@@ -87,7 +90,7 @@ public class ConectarBaseDatos {
         }
     }
     
-    public static void insertarPropietario(){
+    public static void insertarPropietario(Propietario p){
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement stmt;
@@ -95,11 +98,10 @@ public class ConectarBaseDatos {
 
             stmt = conn.createStatement();
             sql = "INSERT INTO PROPIETARIOS VALUES( "
-                    + "   1, "
-                    + "   \'prueba00\', "
-                    + "   \'preuba01\' "
+                    + p.getNuevoId()+", "
+                    + p.getNombre()+", "
+                    + p.getApellido()+" "
                     + ")";
-
             stmt.executeUpdate(sql);
             System.out.println("Insert table in given database...");
             stmt.close();
@@ -108,7 +110,7 @@ public class ConectarBaseDatos {
         }
     }
     
-    public static void insertarCasa(){
+    public static void insertarCasa(Casa c){
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement stmt;
@@ -116,11 +118,11 @@ public class ConectarBaseDatos {
 
             stmt = conn.createStatement();
             sql = "INSERT INTO CASAS VALUES( "
-                    + "   1, "
-                    + "   10, "
-                    + "   2, "
-                    + "   \'preuba01\', "
-                    + "   true, "
+                    + c.getNuevoId()+", "
+                    + c.getMetrosCuadrados()+", "
+                    + c.getHabitaciones()+", "
+                    + c.getDomicilio()+", "
+                    + c.isGaraje()+", "
                     + ")";
 
             stmt.executeUpdate(sql);
@@ -131,41 +133,47 @@ public class ConectarBaseDatos {
         }
     }
     
-    public static void selectPropietarios(){
+    public static ArrayList selectPropietarios(){
+        ArrayList<Propietario> propietarioResultado = new ArrayList<>();
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM PROPIETARIOS");
             while(res.next()){
+                Propietario p = new Propietario();
+                p.setApellido(res.getString("APELLIDOS"));
+                p.setNombre(res.getString("NOMBRE"));
                 System.out.print(res.getInt("PROPIETARIOID") + "; ");
-                System.out.print(res.getString("NOMBRE") + "; ");
-                System.out.print(res.getString("APELLIDOS") + "; ");
-                System.out.println("");
+                propietarioResultado.add(p);
             }
             st.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return propietarioResultado;
     }
     
-    public static void selectCasas(){
+    public static ArrayList selectCasas(){
+        ArrayList<Casa> casasResultado = new ArrayList<>();
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM CASAS");
             while(res.next()){
+                Casa c = new Casa();
+                c.setDomicilio(res.getString("DOMICILIO"));
+                c.setGaraje(res.getBoolean("GARAJE"));
+                c.setHabitaciones(res.getInt("HABITACIONES"));
+                c.setMetrosCuadrados(res.getInt("METROSCUADRADOS"));
                 System.out.print(res.getInt("CASAID") + "; ");
-                System.out.print(res.getInt("METROSCUADRADOS") + "; ");
-                System.out.print(res.getInt("HABITACIONES") + "; ");
-                System.out.print(res.getString("DOMICILIO") + "; ");
-                System.out.print(res.getBoolean("GARAJE") + "; ");
-                System.out.println("");
+                casasResultado.add(c);
             }
             
             st.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return casasResultado;
     }
     
     public static int obtenerIdMaxPropietario(){
