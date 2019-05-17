@@ -50,8 +50,8 @@ public class Inmobiliaria {
     
     
     public void insertarDatosCasa(){
-        ArrayList<Casa> casas = ConectarBaseDatos.selectCasas();
-        for (Casa casa : casas) {
+        ArrayList<Casa> cas = ConectarBaseDatos.selectCasas();
+        for (Casa casa : cas) {
             this.casas.add(casa);
         }
     }

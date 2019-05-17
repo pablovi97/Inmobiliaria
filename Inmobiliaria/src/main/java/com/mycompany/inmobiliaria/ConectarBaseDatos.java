@@ -156,7 +156,7 @@ public class ConectarBaseDatos {
         try (
             Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
             Statement st = conn.createStatement();
-            ResultSet res = st.executeQuery("SELECT * FROM CASAS");
+            ResultSet res = st.executeQuery("SELECT * FROM CASA");
             while(res.next()){
                 
                 Casa c = new Casa();

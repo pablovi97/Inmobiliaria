@@ -106,7 +106,7 @@ public class FXMLController implements Initializable {
         ConectarBaseDatos.crearTablaCasa();
         ConectarBaseDatos.crearTablaPropietarios();
         ConectarBaseDatos.crearTablaPropietariosCasa();
-        //this.inmobiliaria.insertarDatosCasa();
+        this.inmobiliaria.insertarDatosCasa();
         this.inmobiliaria.insertarDatosPropietarios();
         
     }
