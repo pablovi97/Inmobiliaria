@@ -250,5 +250,40 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static Inmobiliaria selectPropCasa() {
+        Inmobiliaria result = new Inmobiliaria();
+        ArrayList<Casa> casasResultado = new ArrayList<>();
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
+            Statement st = conn.createStatement();
+            ResultSet res = st.executeQuery("SELECT * FROM PROPIETARIOSCASA");
+            
+            while (res.next()) {
+                Propietario p = new Propietario();
+                p.setNuevoId(res.getInt("PROPIETARIOID"));
+                ResultSet res2 = st.executeQuery("SELECT * FROM PROPIETARIOS WHERE PROPIETARIOID = " + p.getNuevoId());
+                p.setApellido(res2.getString("APELLIDOS"));
+                p.setNombre(res2.getString("NOMBRE"));
+                p.setNuevoId(res2.getInt("PROPIETARIOID"));
+                result.propietarios.add(p);
+                
+                Casa c = new Casa();
+                p.setNuevoId(res.getInt("CASAID"));
+                ResultSet res3 = st.executeQuery("SELECT * FROM PROPIETARIOS WHERE PROPIETARIOID = " + c.getNuevoId());
+                p.setApellido(res3.getString("APELLIDOS"));
+                p.setNombre(res3.getString("NOMBRE"));
+                p.setNuevoId(res3.getInt("PROPIETARIOID"));
+                result.casas.add(c);
+                
+                p.casas.add(c);
+            }
+
+            st.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
 
 }
