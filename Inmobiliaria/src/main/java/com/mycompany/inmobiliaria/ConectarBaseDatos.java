@@ -269,11 +269,11 @@ public class ConectarBaseDatos {
                 result.propietarios.add(p);
                 
                 Casa c = new Casa();
-                p.setNuevoId(res.getInt("CASAID"));
+                c.setNuevoId(res.getInt("CASAID"));
                 ResultSet res3 = st.executeQuery("SELECT * FROM PROPIETARIOS WHERE PROPIETARIOID = " + c.getNuevoId());
-                p.setApellido(res3.getString("APELLIDOS"));
-                p.setNombre(res3.getString("NOMBRE"));
-                p.setNuevoId(res3.getInt("PROPIETARIOID"));
+                c.setDomicilio(res3.getString("DOMICILIO"));
+                c.setHabitaciones(res3.getInt("HABITACIONES"));
+                c.setMetrosCuadrados(res3.getInt("METROSCUADRADOS"));
                 result.casas.add(c);
                 
                 p.casas.add(c);

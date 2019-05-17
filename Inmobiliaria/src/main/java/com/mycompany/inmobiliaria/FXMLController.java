@@ -86,7 +86,7 @@ public class FXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        inmobiliaria = new Inmobiliaria();
+        
         btnOkUser.setVisible(false);
         btnCancelarUser.setVisible(false);
         txApellidosUser.setDisable(true);
@@ -107,7 +107,7 @@ public class FXMLController implements Initializable {
         ConectarBaseDatos.crearTablaCasa();
         ConectarBaseDatos.crearTablaPropietarios();
         ConectarBaseDatos.crearTablaPropietariosCasa();
-        
+        inmobiliaria = ConectarBaseDatos.selectPropCasa();
         this.inmobiliaria.insertarDatosCasa();
         this.inmobiliaria.insertarDatosPropietarios();
         
