@@ -36,6 +36,10 @@ public class Casa {
     public int getNuevoId() {
         return nuevoId;
     }
+
+    public void setNuevoId(int nuevoId) {
+        this.nuevoId = nuevoId;
+    }
     int nuevoId;
     static int idcasa = ConectarBaseDatos.obtenerIdMaxCasa();;
 

@@ -39,6 +39,10 @@ public class Propietario {
     public int getNuevoId() {
         return nuevoId;
     }
+
+    public void setNuevoId(int nuevoId) {
+        this.nuevoId = nuevoId;
+    }
     int nuevoId;
     static int id = ConectarBaseDatos.obtenerIdMaxPropietario();;
 

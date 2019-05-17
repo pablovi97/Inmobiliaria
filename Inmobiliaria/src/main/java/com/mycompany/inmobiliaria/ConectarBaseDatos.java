@@ -23,7 +23,7 @@ public class ConectarBaseDatos {
     public static void crearTablaPropietarios() {
 
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement stmt;
             String sql;
 
@@ -42,11 +42,11 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void crearTablaCasa() {
 
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement stmt;
             String sql;
 
@@ -66,11 +66,11 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void crearTablaPropietariosCasa() {
 
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement stmt;
             String sql;
 
@@ -88,18 +88,18 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void insertarPropietario(Propietario p){
+
+    public static void insertarPropietario(Propietario p) {
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement stmt;
             String sql;
 
             stmt = conn.createStatement();
             sql = "INSERT INTO PROPIETARIOS VALUES( "
-                    + p.getNuevoId()+", "
-                    + " \'"+ p.getNombre()+ "\', "
-                    + " \'"+p.getApellido()+"\' "
+                    + p.getNuevoId() + ", "
+                    + " \'" + p.getNombre() + "\', "
+                    + " \'" + p.getApellido() + "\' "
                     + ")";
             stmt.executeUpdate(sql);
             System.out.println("Insert table in given database...");
@@ -108,19 +108,19 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void insertarCasa(Casa c){
+
+    public static void insertarCasa(Casa c) {
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement stmt;
             String sql;
 
             stmt = conn.createStatement();
-            sql = "INSERT INTO CASAS VALUES( "
-                    + c.getNuevoId()+", "
-                    + c.getMetrosCuadrados()+", "
-                    + c.getHabitaciones()+", "
-                    + " \'"+c.getDomicilio()+" \' "
+            sql = "INSERT INTO CASA VALUES( "
+                    + c.getNuevoId() + ", "
+                    + c.getMetrosCuadrados() + ", "
+                    + c.getHabitaciones() + ", "
+                    + " \'" + c.getDomicilio() + " \' "
                     + ")";
 
             stmt.executeUpdate(sql);
@@ -130,18 +130,19 @@ public class ConectarBaseDatos {
             Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static ArrayList selectPropietarios(){
+
+    public static ArrayList selectPropietarios() {
         ArrayList<Propietario> propietarioResultado = new ArrayList<>();
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM PROPIETARIOS");
-            while(res.next()){
+            while (res.next()) {
                 Propietario p = new Propietario();
                 p.setApellido(res.getString("APELLIDOS"));
                 p.setNombre(res.getString("NOMBRE"));
-                System.out.print(res.getInt("PROPIETARIOID") + "; ");
+                p.setNuevoId(res.getInt("PROPIETARIOID"));
+
                 propietarioResultado.add(p);
             }
             st.close();
@@ -150,34 +151,35 @@ public class ConectarBaseDatos {
         }
         return propietarioResultado;
     }
-    
-    public static ArrayList selectCasas(){
+
+    public static ArrayList selectCasas() {
         ArrayList<Casa> casasResultado = new ArrayList<>();
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM CASA");
-            while(res.next()){
-                
+            while (res.next()) {
+
                 Casa c = new Casa();
                 c.setDomicilio(res.getString("DOMICILIO"));
                 c.setHabitaciones(res.getInt("HABITACIONES"));
                 c.setMetrosCuadrados(res.getInt("METROSCUADRADOS"));
-                System.out.print(res.getInt("CASAID") + "; ");
+                c.setNuevoId(res.getInt("CASAID"));
+
                 casasResultado.add(c);
             }
-            
+
             st.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return casasResultado;
     }
-    
-    public static int obtenerIdMaxPropietario(){
+
+    public static int obtenerIdMaxPropietario() {
         int result = -1;
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery("SELECT MAX(PROPIETARIOID) FROM PROPIETARIOS");
             result = res.getInt("PROPIETARIOID");
@@ -185,40 +187,40 @@ public class ConectarBaseDatos {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return result+1;
+        return result + 1;
     }
-    
-    public static int obtenerIdMaxCasa(){
+
+    public static int obtenerIdMaxCasa() {
         int result = -1;
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
-            ResultSet res = st.executeQuery("SELECT MAX(CASAID) FROM PROPIETARIOS");
+            ResultSet res = st.executeQuery("SELECT MAX(CASAID) FROM CASA");
             result = res.getInt("CASAID");
             st.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return result+1;
+        return result + 1;
     }
-    
-    public static void eliminarCasa(int id){
+
+    public static void eliminarCasa(int id) {
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
-            ResultSet res = st.executeQuery("DELETE FROM CASAS WHERE CASAID = "+id);
+            ResultSet res = st.executeQuery("DELETE FROM CASAS WHERE CASAID = " + id);
             System.out.println(res.getString(0));
             st.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-    
-    public static void eliminarPropietario(int id){
+
+    public static void eliminarPropietario(int id) {
         try (
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC","root","1q2w3e4r");) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
             Statement st = conn.createStatement();
-            ResultSet res = st.executeQuery("DELETE FROM PROPIETARIOS WHERE PROPIETARIOID = "+id);
+            ResultSet res = st.executeQuery("DELETE FROM PROPIETARIOS WHERE PROPIETARIOID = " + id);
             System.out.println(res.getString(0));
             st.close();
         } catch (SQLException ex) {
@@ -226,4 +228,3 @@ public class ConectarBaseDatos {
         }
     }
 }
-

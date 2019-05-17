@@ -1,6 +1,7 @@
 package com.mycompany.inmobiliaria;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -106,6 +107,7 @@ public class FXMLController implements Initializable {
         ConectarBaseDatos.crearTablaCasa();
         ConectarBaseDatos.crearTablaPropietarios();
         ConectarBaseDatos.crearTablaPropietariosCasa();
+        
         this.inmobiliaria.insertarDatosCasa();
         this.inmobiliaria.insertarDatosPropietarios();
         
@@ -229,16 +231,12 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void anhadirCasa(MouseEvent event) {
-        /* 
-        txMetrosCasa.setDisable(false);
-        txHabitacionesCasa.setDisable(false);
-        txDomicilioCasa.setDisable(false);
-        txIdCasa.setDisable(false);
-        btnCancelarCasa.setDisable(true);
-        btnOkCasa.setDisable(true);
-        chkGarajeCasa.setDisable(true);
-         */
         
+        txIdCasa.setDisable(false);
+        btnCancelarCasa.setDisable(false);
+        btnOkCasa.setDisable(false);
+        //chkGarajeCasa.setDisable(true);
+
     }
     
     @FXML
@@ -354,10 +352,29 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void atrasCasaProp(MouseEvent event) {
+        
+        try {
+            Casa c = inmobiliaria.RetrocederCasaPropietario(Integer.parseInt(txIdUser.getText()));
+            txIdCasa.setText(String.valueOf(c.getNuevoId()));
+            txMetrosCasa.setText(String.valueOf(c.getMetrosCuadrados()));
+            txHabitacionesCasa.setText(String.valueOf(c.getHabitaciones()));
+            txDomicilioCasa.setText(c.getDomicilio());
+        } catch (NumberFormatException numberFormatException) {
+            System.out.println("peta");
+        }
     }
     
     @FXML
     private void avanzarCasaProp(MouseEvent event) {
+          try {
+            Casa c = inmobiliaria.avanzarCasaPropietario(Integer.parseInt(txIdUser.getText()));
+            txIdCasa.setText(String.valueOf(c.getNuevoId()));
+            txMetrosCasa.setText(String.valueOf(c.getMetrosCuadrados()));
+            txHabitacionesCasa.setText(String.valueOf(c.getHabitaciones()));
+            txDomicilioCasa.setText(c.getDomicilio());
+        } catch (NumberFormatException numberFormatException) {
+              System.out.println("peta ");
+        }
     }
     
 }

@@ -46,17 +46,15 @@ public class Inmobiliaria {
         }
         return casaResultado;
     }
-    
-    
-    
-    public void insertarDatosCasa(){
+
+    public void insertarDatosCasa() {
         ArrayList<Casa> cas = ConectarBaseDatos.selectCasas();
         for (Casa casa : cas) {
             this.casas.add(casa);
         }
     }
-    
-    public void insertarDatosPropietarios(){
+
+    public void insertarDatosPropietarios() {
         ArrayList<Propietario> props = ConectarBaseDatos.selectPropietarios();
         for (Propietario prop : props) {
             this.propietarios.add(prop);
@@ -151,21 +149,44 @@ public class Inmobiliaria {
 
         propietarios.add(p);
         posPropietario++;
-        
+
         System.out.println("posProp" + posPropietario);
 
     }
-  /*  
-    public void avanzarCasaPropietario(int i){
-        
-    }
- 
-    public Casa RetrocederCasaPropietario(int i){
+    static int posPropcasa = -1;
 
-        
-        
+    public Casa avanzarCasaPropietario(int i) {
+        Casa result = null;
+        Propietario p = propietarios.get(i);
+        try {
+
+            if (posPropcasa + 1 <= p.casas.size()) {
+                posPropcasa++;
+
+            }
+        } catch (Exception e) {
+        }
+        result = p.casas.get(posPropcasa);
+        return result;
+
     }
-*/
+
+    public Casa RetrocederCasaPropietario(int i) {
+        Casa result = null;
+        Propietario p = propietarios.get(i);
+
+        try {
+            if (posPropcasa - 1 > -1) {
+                posPropcasa--;
+
+            }
+        } catch (Exception e) {
+        }
+
+        result = p.casas.get(posPropcasa);
+        return result;
+
+    }
 
     public void introducirCasa(Casa c) {
 
@@ -177,6 +198,7 @@ public class Inmobiliaria {
     public void introducirCasasaProp(int i, Casa c) {
 
         if (i <= propietarios.size()) {
+            
             Propietario p = propietarios.get(i);
             p.casas.add(c);
         }
