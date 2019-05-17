@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -227,4 +228,29 @@ public class ConectarBaseDatos {
             ex.printStackTrace();
         }
     }
+    
+    public static void insertarPropietarioCasa(Propietario p) {
+        try (
+                Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.56.102:3306/inmobiliariaBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
+            Statement stmt;
+            String sql;
+
+            stmt = conn.createStatement();
+            Iterator<Casa> cas = (Iterator<Casa>) p.getCasas();
+            while(cas.hasNext()){
+                sql = "INSERT INTO PROPIETARIOSCASA VALUES( "
+                    + p.nuevoId + ", "
+                    + cas.next().nuevoId + " "
+                    + ")";
+
+            stmt.executeUpdate(sql);
+            }
+            
+            System.out.println("Insert table in given database...");
+            stmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConectarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
