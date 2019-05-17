@@ -201,6 +201,7 @@ public class Inmobiliaria {
             
             Propietario p = propietarios.get(i);
             p.casas.add(c);
+            ConectarBaseDatos.insertarPropietarioCasa(p,c);
         }
 
     }
